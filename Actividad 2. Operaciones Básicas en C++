@@ -1,0 +1,27 @@
+#include <iostream>
+
+int main() {
+    // Variables para almacenar los valores ingresados por el usuario
+    double numero1, numero2;
+
+    // Pedir al usuario que ingrese los dos valores
+    std::cout << "Escribe el primer número: ";
+    std::cin >> numero1;
+
+    std::cout << "Escribe el segundo número: ";
+    std::cin >> numero2;
+
+    // Realizar las operaciones matemáticas
+    double suma = numero1 + numero2;
+    double resta = numero1 - numero2;
+    double multiplicacion = numero1 * numero2;
+    double division = numero1 / numero2;
+
+    // Mostrar los resultados con sus respectivos enunciados
+    std::cout << "La suma es: " << suma << std::endl;
+    std::cout << "La resta es: " << resta << std::endl;
+    std::cout << "La multiplicación es: " << multiplicacion << std::endl;
+    std::cout << "La división es: " << division << std::endl;
+
+    return 0;
+}
