@@ -66,7 +66,7 @@ int main() {
     cout << "Ingrese el apellido materno (Dejalo en blanco en caso de no contar con uno): ";
     getline(cin, apellidoMaterno);
 
-    cout << "Ingrese la fecha de nacimiento (en formato DD/MM/AAAA): ";
+    cout << "Ingrese la fecha de nacimiento (en formato DD/MM/AAAA) (Recuerde poner / despues del dia y mes como en el ejemplo): ";
     getline(cin, fechaNacimiento);
 
     RFCGenerator rfcGen(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
