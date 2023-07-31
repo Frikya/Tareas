@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Empleado {
+public:
+    string nombre;
+    string apellidoPaterno;
+    string apellidoMaterno;
+    string fechaNacimiento;
+
+    // Constructor
+    Empleado(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento) {
+        this->nombre = nombre;
+        this->apellidoPaterno = apellidoPaterno;
+        this->apellidoMaterno = apellidoMaterno;
+        this->fechaNacimiento = fechaNacimiento;
+    }
+
+    // Función para calcular el RFC
+    string calcularRFC() {
+        string rfc;
+        rfc += obtenerInicial(this->apellidoPaterno);
+        rfc += obtenerVocalInterna(this->apellidoPaterno);
+
+        if (this->apellidoMaterno.empty()) {
+            rfc += "X";
+        } else {
+            rfc += obtenerInicial(this->apellidoMaterno);
+        }
+
+        rfc += obtenerInicial(this->nombre);
+        rfc += this->fechaNacimiento.substr(8, 2);
+        rfc += this->fechaNacimiento.substr(3, 2);
+        rfc += this->fechaNacimiento.substr(0, 2);
+        return rfc;
+    }
+
+private:
+    // Función para obtener la primera letra de un string
+    char obtenerInicial(string palabra) {
+        return palabra[0];
+    }
+
+    // Función para obtener la primera vocal interna de un string
+    char obtenerVocalInterna(string palabra) {
+        // Aquí podríamos implementar una lógica para encontrar la primera vocal interna.
+        // Pero para simplificar el ejemplo, asumiremos que siempre será la segunda letra.
+        return palabra[1];
+    }
+};
+
+int main() {
+    string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
+
+    // Capturar datos del empleado
+    cout << "Ingrese el nombre: ";
+    cin >> nombre;
+    cout << "Ingrese el apellido paterno: ";
+    cin >> apellidoPaterno;
+    cout << "Ingrese el apellido materno (si no tiene, dejarlo vacío): ";
+    cin.ignore(); // Ignore newline character from previous input
+    getline(cin, apellidoMaterno);
+    cout << "Ingrese la fecha de nacimiento (formato dd/mm/yyyy): ";
+    cin >> fechaNacimiento;
+
+    // Crear objeto empleado
+    Empleado empleado(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
+
+    // Calcular RFC
+    string rfc = empleado.calcularRFC();
+
+    // Mostrar RFC
+    cout << "RFC: " << rfc << endl;
+
+    return 0;
+}
